@@ -2,6 +2,9 @@
 
 > **MyXpense**: A smart, offline-first personal finance PWA built with React, TypeScript, and Firebase. Features AI insights, secure vault, and real-time cloud sync.
 
+![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_SITE_ID/deploy-status)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Overview
 
 MyXpense is a Progressive Web App (PWA) built for smart expense and income tracking. It provides users with a robust financial management tool featuring offline-first storage with optional Firebase cloud backup, AI-powered insights, a secure Secret Vault for savings, and comprehensive financial tracking capabilities.
@@ -18,6 +21,12 @@ Our vision is to offer a comprehensive, user-friendly, and secure platform for p
 -   **Receipt Scanning**: Smart image scanning for quick transaction entry.
 -   **Cross-Device Sync**: Real-time synchronization across all your devices.
 -   **Modern UI/UX**: Beautiful, mobile-first design with Dark Mode support and smooth Framer Motion animations.
+## Screenshots
+
+|   |   |
+|---|---|
+| ![Dashboard Mockup](https://via.placeholder.com/300x600?text=Dashboard) | ![Analytics Mockup](https://via.placeholder.com/300x600?text=Analytics) |
+| **Dashboard** | **Analytics** |
 
 ## Tech Stack
 

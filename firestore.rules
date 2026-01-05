@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email == 'admin@unshoo.tech';
+    }
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId) || isAdmin();
+      
+      match /transactions/{transactionId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /budgets/{budgetId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /goals/{goalId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /trips/{tripId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /trip_expenses/{expenseId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /vault/{vaultId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      match /notifications/{notificationId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    match /transactions/{transactionId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+    
+    match /budgets/{budgetId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+    
+    match /goals/{goalId} {
+      allow read: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+    
+    match /secret_vaults/{vaultId} {
+      allow read, write: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+    
+    match /notifications/{notificationId} {
+      allow read, write: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+    
+    match /admin/{document=**} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /ai_usage/{usageId} {
+      allow read: if isAdmin();
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+    
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

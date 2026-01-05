@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent text selection on interactive elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.select-none,
+nav,
+header,
+[role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Modal backdrop - prevent background scroll/touch while modal is open */
+.modal-backdrop {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Prevent background content from receiving touch events when modal is open */
+body.modal-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+:root {
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --nav-height: 72px;
+}
+
+html {
+  padding-top: var(--safe-area-inset-top);
+  padding-left: var(--safe-area-inset-left);
+  padding-right: var(--safe-area-inset-right);
+  font-size: 17px;
+  /* Slightly increased for better readability */
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  overscroll-behavior-y: contain;
+  touch-action: manipulation;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  .xs\:w-6 {
+    width: 1.5rem;
+  }
+
+  .xs\:h-6 {
+    height: 1.5rem;
+  }
+
+  .xs\:w-14 {
+    width: 3.5rem;
+  }
+
+  .xs\:h-14 {
+    height: 3.5rem;
+  }
+
+  .xs\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@media (min-width: 375px) {
+  .xs\:w-6 {
+    width: 1.5rem;
+  }
+
+  .xs\:h-6 {
+    height: 1.5rem;
+  }
+
+  .xs\:w-14 {
+    width: 3.5rem;
+  }
+
+  .xs\:h-14 {
+    height: 3.5rem;
+  }
+
+  .xs\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 0.5s ease-out;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 16px);
+  }
+
+  .nav-safe-bottom {
+    padding-bottom: calc(var(--nav-height) + max(env(safe-area-inset-bottom, 0px), 8px));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceSubtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ===================== */
+/* Mobile UX Enhancements */
+/* ===================== */
+
+/* Minimum touch target size (48x48px for accessibility) */
+.touch-target {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* Active state feedback for touch */
+button:active,
+a:active,
+[role="button"]:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Prevent double-tap zoom on interactive elements */
+button,
+input,
+select,
+textarea,
+a {
+  touch-action: manipulation;
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 150ms ease-in, transform 150ms ease-in;
+}
+
+/* Modal animations */
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+}
+
+/* Slide up animation for bottom sheets */
+.sheet-enter {
+  transform: translateY(100%);
+}
+
+.sheet-enter-active {
+  transform: translateY(0);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-exit {
+  transform: translateY(0);
+}
+
+.sheet-exit-active {
+  transform: translateY(100%);
+  transition: transform 200ms ease-in;
+}
+
+/* Haptic feedback visual indicator */
+@keyframes haptic-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+}
+
+.haptic-feedback {
+  animation: haptic-pulse 0.15s ease-out;
+}
+
+/* Card press effect */
+.card-pressable {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.card-pressable:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Pull to refresh indicator */
+@keyframes pull-refresh-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pull-refresh-spinner {
+  animation: pull-refresh-spin 1s linear infinite;
+}
+
+/* Mobile-specific font sizing */
+@media (max-width: 375px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Improve modal backdrop blur */
+.backdrop-blur-enhanced {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Bottom sheet handle */
+.sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  margin: 8px auto;
+}
+
+.dark .sheet-handle {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Improve skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Swipe gesture hint */
+.swipe-hint {
+  animation: swipe-hint 2s ease-in-out infinite;
+}
+
+@keyframes swipe-hint {
+
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateX(-10px);
+    opacity: 1;
+  }
+}
+
+/* Improved button focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Elastic scroll bounce for containers */
+.elastic-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Safe area padding utilities */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* ===================== */
+/* UX Interaction Polish */
+/* ===================== */
+
+.interactive {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.interactive:active {
+  transform: scale(0.96);
+}
+
+.interactive:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(17, 24, 39, 0.7);
+}
+
+/* Scrollbar refinement */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 99px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* ========================= */
+/* Performance Optimizations */
+/* ========================= */
+
+/* Force GPU acceleration for smoother animations */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Optimize scrolling performance */
+.optimize-scrolling {
+  contain: content;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 5000px;
+  /* Approximate height to prevent layout shifts */
+}
+
+/* Optimize heavy components when off-screen */
+.deferred-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Reduce paint areas for fixed elements */
+.fixed-layer {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Disable hover effects while scrolling for better FPS */
+.disable-hover-on-scroll {
+  pointer-events: none;
+}
+
+/* Smoother image rendering */
+img {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+
+/* Reduce layout thrashing for lists */
+.virtual-list-item {
+  contain: layout style paint;
+}
+
+/* Custom Scroll Snap Stop Utility */
+.snap-stop-always {
+  scroll-snap-stop: always;
+}

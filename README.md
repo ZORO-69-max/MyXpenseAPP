@@ -2,7 +2,7 @@
 
 > **MyXpense**: A smart, offline-first personal finance PWA built with React, TypeScript, and Firebase. Features AI insights, secure vault, and real-time cloud sync.
 
-![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_SITE_ID/deploy-status)
+![Netlify Status](https://api.netlify.com/api/v1/badges/myxpenseapp.site./deploy-status)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
@@ -25,7 +25,6 @@ Our vision is to offer a comprehensive, user-friendly, and secure platform for p
 
 |   |   |
 |---|---|
-| ![Dashboard Mockup](https://via.placeholder.com/300x600?text=Dashboard) | ![Analytics Mockup](https://via.placeholder.com/300x600?text=Analytics) |
 | **Dashboard** | **Analytics** |
 
 ## Tech Stack

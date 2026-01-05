@@ -1,7 +1,7 @@
 # MyXpense - Smart Expense Tracker
 
 > **MyXpense**: A smart, offline-first personal finance PWA built with React, TypeScript, and Firebase. Features AI insights, secure vault, and real-time cloud sync.
-(https://www.myxpenseapp.site)
+https://www.myxpenseapp.site
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview

